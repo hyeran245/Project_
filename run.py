@@ -4,7 +4,7 @@ wafer = str(input('Wafer Option'))
 choice = str(input("Choose in Show, Save, Show and Save: "))
 
 print('Please wait...')
-if wafer is 'all':
+if wafer == 'all':
     process.all(choice)
 else:
     process.wafer(wafer, choice)
