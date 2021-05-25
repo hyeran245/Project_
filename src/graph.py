@@ -141,6 +141,6 @@ def graph(route, select):
             plt.savefig(save_path + '/' + image_path[-1] + '.png')
 
         else:
-            raise ValueError('check again.')
+            raise ValueError('Check Graph Option')
 
         plt.close()
