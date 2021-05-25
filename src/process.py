@@ -7,7 +7,16 @@ from . import extract
 
 
 def all(choice):
-    for data in tqdm(glob(path.path() + '/data/P184640/**/*LMZ*.xml', recursive=True)):
+    for data in tqdm(glob(path.path() + '/data/**/*LMZ*.xml', recursive=True)):
+        try:
+            graph.graph(data, choice)
+            extract.data_save(data)
+        except:
+            pass
+
+
+def wafer(wafer, choice):
+    for data in tqdm(glob(path.path() + '/data/**/{}/**/*LMZ*.xml'.format(wafer), recursive=True)):
         try:
             graph.graph(data, choice)
             extract.data_save(data)
