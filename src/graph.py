@@ -5,8 +5,8 @@ import numpy as np
 from numpy import exp
 import warnings
 from lmfit import Parameters, fit_report, minimize, Model
-import path
-import directory
+from . import path
+from . import directory
 
 
 def polyfit(x, y, degree):
@@ -141,6 +141,6 @@ def graph(route, select):
             plt.savefig(save_path + '/' + image_path[-1] + '.png')
 
         else:
-            raise ValueError('check again.')
+            raise ValueError('Check Graph Option')
 
-        plt.clf()
+        plt.close()

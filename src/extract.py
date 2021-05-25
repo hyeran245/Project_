@@ -1,17 +1,17 @@
 import pandas
 import xml.etree.ElementTree as ET
 from dateutil.parser import parse
-import graph
 import os
-import path
-import directory
+from . import graph
+from . import path
+from . import directory
 
 
 def data_save(route):
     tree = ET.parse(route)
     root = tree.getroot()
 
-    columns = ['Lot', 'Wafer', 'Mask', 'TestSite', 'Name', 'Date', 'Row', 'Column', 'ErrorFlag', 'Error description', 'Analysis Wavelength', 'Rsq of Ref. spectrum (Nth)', 'Max transmission of Ref. spec. (dB)', 'Rsq of 1V', 'I at -1V [A]', 'I at 1V[A]']
+    columns = ['Lot', 'Wafer', 'Mask', 'TestSite', 'Name', 'Date', 'Row', 'Column', 'ErrorFlag', 'Error description', 'Analysis Wavelength', 'Rsq of Ref. spectrum (Nth)', 'Max transmission of Ref. spec. (dB)', 'Rsq of IV', 'I at -1V [A]', 'I at 1V[A]']
     #  'Script ID', 'Script Version', 'Script Owner',
     #  스크립트 정보
 
