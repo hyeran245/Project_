@@ -5,8 +5,8 @@ import numpy as np
 from numpy import exp
 import warnings
 from lmfit import Parameters, fit_report, minimize, Model
-import path
-import directory
+from . import path
+from . import directory
 
 
 def polyfit(x, y, degree):
@@ -143,4 +143,4 @@ def graph(route, select):
         else:
             raise ValueError('check again.')
 
-        plt.clf()
+        plt.close()
