@@ -1,11 +1,10 @@
 from src import process
 
-option = str(input())
-choice = str(input("What you gonna do?\n"
-                   "Choose in Show, Save, Show and Save: "))
+wafer = str(input('Wafer Option'))
+choice = str(input("Choose in Show, Save, Show and Save: "))
 
-if option is None:
+print('Please wait...')
+if wafer is 'all':
     process.all(choice)
 else:
-    process.wafer(option, choice)
-print('Please wait...')
+    process.wafer(wafer, choice)
