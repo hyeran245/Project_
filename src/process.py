@@ -22,3 +22,12 @@ def wafer(wafer, choice):
             extract.data_save(data)
         except:
             pass
+
+
+def coordinate(wafer, coordinate, choice):
+    for data in glob(path.path() + '/data/**/{}/**/*{}*LMZ*.xml'.format(wafer, coordinate), recursive=True):
+        try:
+            graph.graph(data, choice)
+            extract.data_save(data)
+        except:
+            pass
