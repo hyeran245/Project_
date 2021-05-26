@@ -7,7 +7,9 @@ while True:
     image = str(input("Choose in Show, Save, Show and Save: "))
     print('Please wait...')
     try:
-        if wafer == 'all' and coordinate == 'all':
+        if wafer == '' or coordinate == '':
+            raise ValueError('There is blank')
+        elif wafer == 'all' and coordinate == 'all':
             process.all(image)
         elif wafer != 'all' and coordinate == 'all':
             process.wafer(wafer, image)
