@@ -6,26 +6,26 @@ from . import graph
 from . import extract
 
 
-def all(choice):
+def all(image):
     for data in tqdm(glob(path.path() + '/data/**/*LMZ*.xml', recursive=True)):
-        graph.graph(data, choice)
+        graph.graph(data, image)
         extract.data_save(data)
 
 
-def wafer(wafer, choice):
+def wafer(wafer, image):
     flag = False
     for data in tqdm(glob(path.path() + '/data/**/{}/**/*LMZ*.xml'.format(wafer), recursive=True)):
-        graph.graph(data, choice)
+        graph.graph(data, image)
         extract.data_save(data)
         flag = True
     if flag is False:
         raise ValueError('Check Wafer Option')
 
 
-def coordinate(wafer, coordinate, choice):
+def coordinate(wafer, coordinate, image):
     flag = False
     for data in glob(path.path() + '/data/**/{}/**/*{}*LMZ*.xml'.format(wafer, coordinate), recursive=True):
-        graph.graph(data, choice)
+        graph.graph(data, image)
         extract.data_save(data)
         flag = True
     if flag is False:
