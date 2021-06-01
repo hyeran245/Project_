@@ -34,7 +34,7 @@ def graph(route, save, show):
         plt.figure(figsize=(16, 10))
 
         # IV Measurement
-        plt.subplot(2, 3, 4)
+        plt.subplot(2, 2, 4)
         voltage = list(map(float, root.find('.//IVMeasurement/Voltage').text.split(',')))
         current = list(map(float, root.find('.//IVMeasurement/Current').text.split(',')))
         v = np.array(voltage)
@@ -62,7 +62,7 @@ def graph(route, save, show):
         plt.yscale('log')
 
         # Raw Spectrum
-        plt.subplot(2, 3, 1)
+        plt.subplot(2, 2, 1)
         TestSiteInfo = root.find('TestSiteInfo')
         TestSite = TestSiteInfo.attrib['TestSite']
         ModulatorName = ".//*[@Name='{}_ALIGN']//".format(TestSite)
@@ -85,7 +85,7 @@ def graph(route, save, show):
         plt.title('Transmission spectra - as measured')
 
         # Fitting
-        plt.subplot(2, 3, 3)
+        plt.subplot(2, 2, 3)
         x = np.array(ref_L)
         y = np.array(ref_IL)
 
@@ -106,7 +106,7 @@ def graph(route, save, show):
         plt.title('Fitting Function')
 
         # Modeling
-        plt.subplot(2, 3, 2)
+        plt.subplot(2, 2, 2)
         ref = np.poly1d(np.polyfit(x, y, ref_max_key))
         for wavelengthsweep in root.iter('WavelengthSweep'):
             L = list(map(float, wavelengthsweep.findtext('L').split(',')))
