@@ -7,7 +7,7 @@ from . import path
 from . import directory
 
 
-def data_save(route):
+def data_save(route): #데이터를 저장하는 함수
     tree = ET.parse(route)
     root = tree.getroot()
 

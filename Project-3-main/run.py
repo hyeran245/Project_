@@ -1,4 +1,4 @@
-import sys
+import sys #파이썬 인터프리터가 제공하는 변수와 함수를 직접 제어할 수 있게 해주는 모듈을 불러옴
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from src import process

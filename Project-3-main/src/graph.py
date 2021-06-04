@@ -9,7 +9,7 @@ from . import path
 from . import directory
 
 
-def polyfit(x, y, degree):
+def polyfit(x, y, degree): # 피팅하기 위한 polyfit 함수정의
     results = {}
     coeffs = np.polyfit(x, y, degree)
     results['polynomial'] = coeffs.tolist()
@@ -22,28 +22,28 @@ def polyfit(x, y, degree):
     return results
 
 
-def IV(x, Is, vt):
+def IV(x, Is, vt): #IV 함수정의
     return Is * (exp(x / vt) - 1)
 
 
 def graph(route, save, show):
-    with warnings.catch_warnings():
+    with warnings.catch_warnings(): #모든 경고는 무시된다
         warnings.simplefilter('ignore', np.RankWarning)
-        tree = parse(str(route))
+        tree = parse(str(route)) #파싱함
         root = tree.getroot()
-        plt.figure(figsize=(16, 10))
+        plt.figure(figsize=(16, 10)) #그래프는 가로 16개, 세로 10개씩 보여줌
 
         # IV Measurement
         plt.subplot(2, 2, 4)
         voltage = list(map(float, root.find('.//IVMeasurement/Voltage').text.split(',')))
         current = list(map(float, root.find('.//IVMeasurement/Current').text.split(',')))
-        v = np.array(voltage)
+        v = np.array(voltage) #각각을 배열함
         c = np.array(current)
         gmodel = Model(IV)
         params = gmodel.make_params(Is=1, vt=0.026)
         result = gmodel.fit(c, params, x=v)
 
-        c2 = c - result.best_fit
+        c2 = c - result.best_fit #c값에서 r^2이 최대인 값을 빼준다
         IV_Rsq = {}
         for i in range(1, 20):
             poly = polyfit(v, c2, i)
